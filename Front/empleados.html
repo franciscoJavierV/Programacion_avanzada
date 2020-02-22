@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados</title>
+</head>
+<body>
+    <style>
+        /*estilos necesarios para cada pagina*/
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            color: darkgray;
+        }
+        body{
+            background-color: whitesmoke;
+        }
+       li,a{
+        font-family:Arial, Helvetica, sans-serif;
+        color: white;
+        
+    }       
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px,10%;
+    }
+    li{
+        display: inline-block;
+        padding: 0px,20px;
+        padding-right: 15px;
+        padding-left: 15px;
+        font-size: 20px;
+        border-right: 1px solid blue;
+        font-weight: 200;
+        text-align: center;        
+        align-content: center;
+        text-decoration: none;
+    }
+    a:hover{
+        color: blue;
+
+        }
+    
+    nav{
+        background-color: lightblue;
+        padding: 10px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    
+      .icono{
+          margin-left: 0;
+          margin-right: 200px;
+          border: none;
+          font-size: 20px;
+      } 
+
+    /*estilos necesarios hasta aca*/
+     form{
+         margin: 10px auto;
+         width: 300px;
+         background-color: white;
+         padding: 15px;
+         border: solid 1px  #000;
+     }
+        input , select, button{
+            color: #999;
+            border: 1px solid #393939;
+            border-radius: 5px 5px 5px 5px;
+            font-size: medium;
+            margin: 5px;
+        }  
+
+     
+     h3 {
+         text-align: center;
+         font-size: larger;
+         color: lightblue;
+     }
+     p {
+         font-size: medium;
+         font-family: Georgia, 'Times New Roman', Times, serif;
+     }
+     .center-content {
+         text-align: center;
+     }
+     .aviso{
+        text-align: center;
+        width: 300px;
+        margin: 0 auto;
+     }
+    </style>
+    <!-- header necesario en cada pagina--->
+    <header>
+        <nav>
+            <ul class="lista">
+                <li class="icono">Empleados</li>
+                <li class="inicio"><a href="index.html">Inicio</a></li>
+                <li><a href="pedir.html">Pedir</a></li>
+                <li><a href="clientes.html">Clientes</a></li>
+                <li><a href="empleados.html">Empleados</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+   <!-- ajax para ocultar el form--> 
+
+
+<div id="forms" class="forms">
+    <div id="nuevo_emp" class="nuevo_emp">        
+        <div id="form">
+            <form action="" method="GET" class="crear">
+                <h3>Ingrese datos del nuevo empleado</h3>
+                <p>Cedula </p>  <input type="text" placeholder="Ingrese cedula " id="id/nit" name="id/nit" required  minlength="5" maxlength="100"></input>
+                <p>Nombre completo</p>  <input type="text" placeholder="Ingrese su nombre" name ="nombre" id="nombre" required  minlength="3" maxlength="100"></input>
+                <p>Salario</p>  <input type="text" placeholder="Ingrese la direccion" name="direccion" id="direccion" required  minlength="5" maxlength="100"></input>
+                <p>Tipo de Empleado</p>   <select name="tipo" id="tipo" required name="tipo">
+                    <option value="decorador">Decorador</option>
+                    <option value="pastelero"> Pastelero</option>
+                </select>
+                <p>Numero Pasaporte </p>  <input type="text" placeholder="Ingrese numero de pasaporte " id="pasaporte" name="pasaporte" required  minlength="5" maxlength="100"></input>
+                <p>País de Origen</p>  <input type="text" placeholder="Ingrese su pais de origen" name ="origen" id="origen" required  minlength="3" maxlength="100"></input>
+                <p>Experiencia</p>   <select name="Experiencia" id="experiencia" required name="experiencia">
+                    <option value="cinco"> 5</option>
+                    <option value="seis"> 6</option>
+                    <option value="siete"> 7</option>
+                    <option value="ocho"> 8</option>
+                    <option value="nueve"> 9</option>
+                    <option value="diez"> 10</option>
+                </select>
+                <p>Recomendación</p>  <input type="text" placeholder="Ingrese nombre " name ="nombre" id="recomendación" required  minlength="3" maxlength="100"></input>
+                <button type="submit" class="center-content">CREAR</button>           
+            </form>
+            <p class="aviso"> Aviso: si el nombre ingresado no esta registrado como trabajador actualmente la aplicacion procedera sin recomendador</p>              
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>proyecto</title>
+</head>
+<body>
+    <!-- estilos-->
+    <style>
+        /*estilos necesarios para cada pagina*/
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            color: darkgray;
+        }
+        body{
+            background-color: whitesmoke;
+        }
+       li,a{
+        font-family:Arial, Helvetica, sans-serif;
+        color: white;
+        
+    }       
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px,10%;
+    }
+    li{
+        display: inline-block;
+        padding: 0px,20px;
+        padding-right: 15px;
+        padding-left: 15px;
+        font-size: 20px;
+        border-right: 1px solid blue;
+        font-weight: 200;
+        text-align: center;        
+        align-content: center;
+        text-decoration: none;
+    }
+    a:hover{
+        color: blue;
+
+        }
+    
+    nav{
+        background-color: lightblue;
+        padding: 10px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    
+      .icono{
+          margin-left: 0;
+          margin-right: 200px;
+          border: none;
+          font-size: 20px;
+      } 
+
+    /*estilos necesarios hasta aca*/
+        p{
+            font-size: medium;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        form{
+            width: fit-content;
+            padding: 20px;
+            border: 5px solid lightblue;
+            border-radius: 0;              
+            box-sizing: border-box;
+            border-bottom-color: border;
+            background:transparent;
+            text-align: center;
+            float: left;
+        }
+        .crear{
+            margin-right: 200px;
+            margin-left: 300px;
+        }
+        input , select, button{
+            color: 999;
+            border: 1px solid #393939;
+            border-radius: 5px 5px 5px 5px;
+            font-size: medium;
+            margin: 5px;
+        }        
+        h3{
+            font-size: large;
+            text-align:center;
+            padding: 10px;
+            color: lightblue;
+        }
+        h1{
+            text-align: center;
+            font-size: 50px;
+            padding: 40px;
+        }
+        button{
+            width: 90%;
+        }
+     
+    </style>
+    <!-- vista html-->
+
+    <!--header necesario en cada pagina-->
+    <header>
+        <nav>
+            <ul class="lista">
+                <li class="icono">PROYECTO</li>
+                <li class="inicio"><a href="index.html">Inicio</a></li>
+                <li><a href="pedir.html">Pedir</a></li>
+                <li><a href="clientes.html">Clientes</a></li>
+                <li><a href="empleados.html">Empleados</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+    <h1 id="Ordene pasteles">Welcome</h1>
+    <div id="nuevo_cli">
+        
+        <div id="form">
+        <form action="" method="GET" class="crear">
+        <h3>Ingrese datos si es nueva persona externa</h3>
+          <p>Nombre</p>  <input type="text" placeholder="Ingrese su nombre" name ="nombre" id="nombre" required  minlength="3" maxlength="100"></input>
+          <p>Direccion</p>  <input type="text" placeholder="Ingrese la direccion" name="direccion" id="direccion" required  minlength="5" maxlength="100"></input>
+          <p>Telefono</p>  <input type="tel" placeholder="Ingrese el telefono" id="telefono" name="telefono required  minlength="7" maxlength="20"></input>
+          <p>Cedula / NIT</p>  <input type="text" placeholder="Ingrese cedula o nit " id="id/nit" name="id/nit" required  minlength="5" maxlength="100"></input>
+          <p>Tipo</p>   <select name="tipo" id="tipo" required name="tipo">
+                 <option value="empresa">Empresa</option>
+                 <option value="cliente"> Cliente</option>
+             </select>
+
+             <button type="submit">CREAR</button>           
+        </form>
+           <form action="" method="GET" class="ingreso">
+               <h3>Ingrese si ya es usuario</h3>
+            <p>Nombre</p><input type="text" placeholder="Ingrese nombre de usuario" id="nombre" required >
+            <p>Contraseña</p> <input type="password" placeholder="Contraseña" id="contraseña" required>
+            <button type="submit">Ingresar</button>        
+           </form>
+    </div>
+    </div>
+    
+
+
+    <!-- script -->
+    <script>
+        
+    </script>
+   
+</body>
+</html>
