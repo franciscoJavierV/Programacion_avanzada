@@ -60,10 +60,30 @@ def pedir():
 @app.route('/clientes.html')
 def clientes():
     return render_template("clientes.html")
+### listar empleados
+@app.route('/lista.html')
+def listar_empleados():    
+    return render_template('lista.html')
 ### ruta renderizado de empleados    
-@app.route('/empleados.html')
-def empleados():
-    return render_template("empleados.html")
-
+@app.route('/empleados.html',methods=['GET'])
+def empleados():    
+    try:
+        cedula = request.args.get('cedula')
+        nombre = request.args.get('nombre')
+        salario = request.args.get('salario')
+        tipo = request.args.get('tipo')
+        pasaporte = request.args.get('pasaporte')
+        pais = request.args.get('pais')
+        experiencia = request.args.get('experiencia')
+        recomendacion = request.args.get('recomendacion')
+        empleado = {"nombre":nombre , "tipo":tipo, "recomendacion":recomendacion}
+        emp = json.dumps(empleado)        
+        if (nombre != ''):
+            return render_template("empleados.html", emp)
+        else:
+            return "hola"
+    except:
+        return render_template('empleados.html')
+    
 
 app.run(debug=True)
