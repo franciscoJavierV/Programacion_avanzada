@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>listar empleados</title>
+    <title>listar pasteleros</title>
 </head>
 <body>
     
@@ -111,11 +111,26 @@
     </nav>
 </header>
 
+    
 
-    <h3>LISTA DE EMPLEADOS</h3>
+    <h3>LISTA DE PASTELEROS</h3>
+
     
     <!-- mostrando datos de la db-->
 
+    
+{% with messages = get_flashed_messages()  %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
   
 </body>
 </html>
