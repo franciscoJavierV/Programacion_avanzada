@@ -1,14 +1,27 @@
 ## @imports
-from flask import Flask
-from flask import request
-from flask import render_template
-from flaskext.mysql import MySQL
 import json
+
+from flask import Flask, render_template, request
+from datetime import datetime
+from flaskext.mysql import MySQL
+
 ##Primeras instancias de flask y la db
 
+
+app = Flask(__name__)
+
+mysql = MySQL()
+ 
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'francisco'
+app.config['MYSQL_DATABASE_DB'] = 'pasteleria'
+
+mysql.init_app(app)
+conn = mysql.connect()
+cur = conn.cursor()
+
 app = Flask(__name__, template_folder="../Front", static_folder="../Front")
-
-
 
 ###ruta renderizado de index
 @app.route('/index.html', methods=['GET'] )
@@ -17,10 +30,14 @@ def index():
         nombre = request.args.get('nombre')
         direccion = request.args.get('direccion')
         telefono = request.args.get('telefono')
-        id = request.args.get('id/nit')
+        cedula = request.args.get('id/nit')
         tipo = request.args.get('tipo')
-        if (nombre != ''):
-            return 'Hola ' + nombre
+       
+        cur.execute("INSERT INTO persona_externa VALUES(\"%s\",\"%s\",\"%s\,\"%s\")"%(cedula,nombre,direccion,fecha))        
+        conn.commit()
+    
+        if (nombre != ''):           
+            return render_template('index.html')
         else:
             return render_template('index.html')
     except:
@@ -57,33 +74,44 @@ def pedir():
     
 
     ### ruta renderizado de clientes    
-@app.route('/clientes.html')
-def clientes():
-    return render_template("clientes.html")
+@app.route('/Mi_pedido.html')
+def pedidos():
+    return render_template("Mi_pedido.html")
+
+
+@app.route('/mostrar_pasteles.html' , methods = ['GET'])
+def pasteles():
+    buscar = request.args.get('buscar')        
+    print(buscar)
+    return render_template("mostrar_pasteles.html")    
 ### listar empleados
 @app.route('/lista.html')
 def listar_empleados():    
-    return render_template('lista.html')
+
+    cur.execute('SELECT nombre FROM persona_externa ')
+    data = cur.fetchall()
+    return json.dumps(data)
 ### ruta renderizado de empleados    
-@app.route('/empleados.html',methods=['GET'])
-def empleados():    
+@app.route('/empleados.html' , methods = ['GET'])
+def empleados():
     try:
-        cedula = request.args.get('cedula')
         nombre = request.args.get('nombre')
+        cedula = request.args.get('cedula')
         salario = request.args.get('salario')
-        tipo = request.args.get('tipo')
-        pasaporte = request.args.get('pasaporte')
-        pais = request.args.get('pais')
-        experiencia = request.args.get('experiencia')
-        recomendacion = request.args.get('recomendacion')
-        empleado = {"nombre":nombre , "tipo":tipo, "recomendacion":recomendacion}
-        emp = json.dumps(empleado)        
-        if (nombre != ''):
-            return render_template("empleados.html", emp)
-        else:
-            return "hola"
+              
+        if (nombre != ''):            
+            cur.execute("INSERT INTO empleado VALUES(\"%s\",\"%s\",\"%s\")"%(cedula,nombre,salario))        
+            conn.commit()    
+            return "cliente" + nombre 
+        else:    
+            return render_template('empleados.html')
     except:
         return render_template('empleados.html')
+      
+        
+        
+
     
+
 
 app.run(debug=True)
